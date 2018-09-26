@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -g -ansi -pedantic -c
+CFLAGS=-Wall -g -ansi -pedantic -c -std=c11
 LDFLAGS=-lpcre -lpthread
 
 

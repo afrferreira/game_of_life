@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
       game_free(game);
     }
 
-    printf("\nGeneration %u:\n", generation);
+    printf("\nGeneration %zu:\n", generation);
     game_print_board(game);
   }
 

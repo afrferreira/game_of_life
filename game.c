@@ -115,7 +115,7 @@ static int __parse_custom_format(Game *game, FILE * board)
   game->board = MEM_ALLOC_N(char, game->cols * game->rows);
 
   /* Read game->rows lines describing the board */
-  sprintf(boardline_re, "^([#.]{%u})$", game->cols);
+  sprintf(boardline_re, "^([#.]{%zu})$", game->cols);
   line = MEM_ALLOC_N(char, game->cols + 2);
   for (i = 0; i < game->rows; i++) {
     fgets(line, game->cols + 2, board);
@@ -298,7 +298,7 @@ int game_tick(Game *game)
     tinfo[tnum].width = BOARD_SLICE_WIDTH;
 
     if (pthread_create(&tinfo[tnum].tid, NULL, &__process_slice, &tinfo[tnum])) {
-      fprintf(stderr, "Error while creating thread %u. Waiting for other threads to finish.\n", tnum);
+      fprintf(stderr, "Error while creating thread %zu. Waiting for other threads to finish.\n", tnum);
       retval = 1;
     }
   }
