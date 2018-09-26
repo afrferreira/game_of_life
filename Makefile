@@ -1,19 +1,17 @@
 CC=gcc
-CFLAGS=-Wall -g -ansi -pedantic
-LDFLAGS=-lpcre -pthread
+CFLAGS=-Wall -g -ansi -pedantic -c
+LDFLAGS=-lpcre -lpthread
+
 
 OUTPUT=glife
 SRC=config.c game.c main.c mem.c
+OBJ=$(patsubst %.c,%.o,$(SRC))
 
-DOXYGEN=doxygen
-DOXYCONF=doxygen.conf
-DOXYDIR=${PWD}/doc
+$(OUTPUT): $(OBJ)
+	$(CC) -o $(OUTPUT) $(OBJ) $(LDFLAGS)
 
-all:
-	$(CC) $(CFLAGS) $(LDFLAGS) $(SRC) -o $(OUTPUT)
-
-doc:
-	$(DOXYGEN) $(DOXYCONF)
+%.o: %.c
+	$(CC) $(CFLAGS) $<
 
 clean:
-	rm -fr $(OUTPUT) $(DOXYDIR)
+	rm -f $(OUTPUT) $(OBJ)
