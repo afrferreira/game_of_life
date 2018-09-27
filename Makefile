@@ -1,6 +1,6 @@
 CC=gcc
-CFLAGS=-Wall -g -ansi -pedantic -c -std=c11
-LDFLAGS=-lpcre -lpthread
+CFLAGS=-Wall -g -ansi -pedantic -c -std=gnu11 -Werror  -fcilkplus
+LDFLAGS=-lpcre -lpthread -lcilkrts
 
 
 OUTPUT=glife
