@@ -297,7 +297,7 @@ int game_tick(Game *game)
     tinfo[tnum].new_board = new_board;
     tinfo[tnum].width = BOARD_SLICE_WIDTH;
 
-    if (pthread_create(&tinfo[tnum].tid, NULL, &__process_slice, &tinfo[tnum])) {
+    if (pthread_create(&tinfo[tnum].tid, NULL, __process_slice, &tinfo[tnum])) {
       fprintf(stderr, "Error while creating thread %zu. Waiting for other threads to finish.\n", tnum);
       retval = 1;
     }
